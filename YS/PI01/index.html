@@ -106,15 +106,24 @@
   }
 
   .photo-frame{
-    position:relative;
-    aspect-ratio:4/3;
-    overflow:hidden;
-    background:repeating-linear-gradient(45deg, #35302A 0 10px, #2A2620 10px 20px);
-  }
-  .photo-frame img{
-    position:absolute;inset:0;width:100%;height:100%;
-    object-fit:cover;
-    display:none; /* 이미지 로드 성공 시 스크립트가 표시 */
+  position:relative;
+  aspect-ratio:4/7;
+  overflow:hidden;
+  background:repeating-linear-gradient(45deg, #35302A 0 10px, #2A2620 10px 20px);
+}
+
+.photo-frame img{
+  position:absolute;
+  top:18px;
+  right:18px;
+  bottom:18px;
+  left:18px;
+  width:calc(100% - 36px);
+  height:calc(100% - 36px);
+  object-fit:contain;
+  display:none;
+  border:1px solid rgba(233,226,210,.18);
+}/* 이미지 로드 성공 시 스크립트가 표시 */
   }
   .frame-placeholder{
     position:absolute;inset:0;

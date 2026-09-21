@@ -113,16 +113,16 @@
 }
 
 .photo-frame img{
-  position:absolute;
-  top:18px;
-  right:18px;
-  bottom:18px;
-  left:18px;
-  width:calc(100% - 36px);
-  height:calc(100% - 36px);
+  position:relative;
+  inset:auto;
+  width:100%;
+  height:100%;
   object-fit:contain;
   display:none;
-  border:1px solid rgba(233,226,210,.18);
+
+  border:2px solid rgba(233,226,210,.28);
+  box-shadow:0 0 0 1px rgba(0,0,0,.45),
+             0 4px 12px rgba(0,0,0,.35);
 }/* 이미지 로드 성공 시 스크립트가 표시 */
   
   }

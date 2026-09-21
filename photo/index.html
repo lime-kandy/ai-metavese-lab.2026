@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사진 자료 템플릿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rust:#B5502D;
+    --rust-dark:#8A3A1E;
+    --concrete:#211D19;
+    --concrete-2:#2C2620;
+    --warn:#E8B31C;
+    --teal:#54706A;
+    --paper:#E9E2D2;
+    --ink:#171310;
+    --line: rgba(233,226,210,.16);
+  }
+  html{color-scheme:dark;}
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:var(--concrete);
+    color:var(--paper);
+    font-family:'Noto Sans KR',sans-serif;
+    line-height:1.6;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0px, rgba(0,0,0,.35) 1px, transparent 1px, transparent 3px),
+      radial-gradient(circle at 15% 10%, rgba(181,80,45,.10), transparent 45%),
+      radial-gradient(circle at 85% 90%, rgba(84,112,106,.14), transparent 50%);
+  }
+  a{color:inherit;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 28px;}
+
+  /* 경고 테이프 상단 바 */
+  .tape{
+    height:14px;
+    background:repeating-linear-gradient(135deg, var(--warn) 0, var(--warn) 18px, var(--ink) 18px, var(--ink) 36px);
+  }
+
+  header{
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(0,0,0,.25), transparent);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0;flex-wrap:wrap;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand-mark{
+    width:40px;height:40px;border:2px solid var(--warn);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--warn);font-family:'Black Han Sans',sans-serif;font-size:16px;
+    transform:rotate(-4deg);
+    flex-shrink:0;
+  }
+  .brand-text .title{
+    font-family:'Black Han Sans',sans-serif;
+    font-size:18px;letter-spacing:1px;color:var(--paper);
+  }
+  .brand-text .sub{font-size:10.5px;color:var(--teal);letter-spacing:2px;}
+
+  /* 로고 자리: 우측 상단 모서리 — 4개 모서리 중 한 곳, 학교 로고로 교체 */
+ .logo-slot{
+  width:240px;
+  height:64px;
+  object-fit:contain;
+  display:block;
+  flex-shrink:0;
+}
+
+  /* 메인 : 증거 자료 카드 */
+  main{padding:64px 0 90px;}
+
+  .evidence-head{margin-bottom:26px;}
+  .scene-tag{
+    display:inline-block;
+    font-size:11.5px;
+    letter-spacing:.4px;
+    color:rgba(233,226,210,.45);
+    margin-bottom:10px;
+    /* 형식 · 사용 장면 — 예: "사진 자료 · 1단계, 시험장에서 제시" */
+  }
+  h1.evidence-title{
+    font-family:'Black Han Sans',sans-serif;
+    font-size:clamp(28px,4.4vw,42px);
+    line-height:1.15;margin:0;color:var(--paper);
+    /* 자료의 이름 — 예: "흔들린 답안지" */
+  }
+
+  .evidence-card{
+    border:1px solid var(--line);
+    background:var(--concrete-2);
+    position:relative;
+  }
+  .evidence-card::before{
+    content:"CLUE";
+    position:absolute;top:14px;left:14px;
+    background:var(--ink);color:var(--warn);
+    font-size:10.5px;padding:4px 9px;letter-spacing:1.5px;font-weight:700;
+    z-index:3;
+  }
+
+  .photo-frame{
+    position:relative;
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:repeating-linear-gradient(45deg, #35302A 0 10px, #2A2620 10px 20px);
+  }
+  .photo-frame img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;
+    display:none; /* 이미지 로드 성공 시 스크립트가 표시 */
+  }
+  .frame-placeholder{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:6px;text-align:center;padding:20px;
+    color:rgba(233,226,210,.55);
+  }
+  .frame-placeholder .main{font-size:14px;font-weight:700;color:rgba(233,226,210,.75);}
+  .frame-placeholder .hint{font-size:11.5px;color:rgba(233,226,210,.4);}
+
+  .evidence-foot{
+    padding:16px 20px;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;color:rgba(233,226,210,.5);
+  }
+
+  /* 출처 — 자료 우측 하단, 접힌 종이 형태 */
+  .source-fold{
+    position:absolute;right:0;bottom:0;z-index:4;
+    max-width:220px;
+  }
+  .source-fold summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;gap:6px;
+    background:var(--paper);color:var(--ink);
+    font-size:11px;font-weight:700;letter-spacing:.5px;
+    padding:7px 16px 7px 12px;
+    transform:rotate(-2.5deg);
+    transform-origin:bottom right;
+    box-shadow:-3px -3px 8px rgba(0,0,0,.35);
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  }
+  .source-fold summary::-webkit-details-marker{display:none;}
+  .source-fold summary::before{content:"＋";font-size:12px;}
+  .source-fold[open] summary::before{content:"－";}
+  .source-fold p{
+    position:absolute;right:0;bottom:100%;margin:0 0 6px;
+    width:220px;
+    background:var(--paper);color:var(--ink);
+    font-size:12px;line-height:1.55;
+    padding:12px 14px;
+    box-shadow:0 6px 14px rgba(0,0,0,.4);
+    /* 여기에 실제 출처 텍스트를 입력하세요 */
+  }
+
+  footer{
+    border-top:1px solid var(--line);padding:24px 0;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  footer .copy{font-size:12px;color:rgba(233,226,210,.4);}
+
+  @media (max-width: 560px){
+    .nav{flex-direction:column;align-items:flex-start;}
+    .source-fold{max-width:170px;}
+    .source-fold p{width:170px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="tape"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="brand-mark">01</div>
+      <div class="brand-text">
+        <div class="title">[자료 종류]</div>
+        <div class="sub">UNKNOWN SOURCE · 학습 자료</div>
+      </div>
+    </div>
+    <!-- 학교 로고 삽입 위치: 아래 div를 <img src="로고파일경로" alt="학교 로고"> 로 교체 -->
+   <img class="logo-slot" src="school-logo.png" alt="학교 로고">
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="evidence-head">
+      <!-- 소제목: 자료 형식 + 사용 장면을 입력하세요 -->
+      <span class="scene-tag">문제 n번 • n층에서 발견</span>
+      <!-- 메인 제목: 자료의 이름을 입력하세요 -->
+      <h1 class="evidence-title">[자료 제목]</h1>
+    </div>
+
+    <div class="evidence-card">
+      <div class="photo-frame">
+        <!-- 사진 삽입 위치: src를 실제 이미지 경로로 교체하세요 -->
+        <img src="이미지_경로를_입력하세요.jpg" alt="자료 사진 설명을 입력하세요"
+             onload="this.style.display='block'; this.parentElement.querySelector('.frame-placeholder').style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="frame-placeholder">
+          <span class="main">사진을 이 영역에 삽입하세요</span>
+          <span class="hint">권장 비율 4:3 · 위 img 태그의 src를 교체하세요</span>
+        </div>
+
+        <details class="source-fold">
+          <summary>출처</summary>
+          <p>[실제 출처 입력]</p>
+        </details>
+      </div>
+
+      <div class="evidence-foot">
+        <span>수집 위치: n층</span>
+        <span>자료 번호: nn</span>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <span class="copy">2026 AI METAVERSE LAB · 학생 필수 교육</span>
+  </div>
+</footer>
+
+</body>
+</html>

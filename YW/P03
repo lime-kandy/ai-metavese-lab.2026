@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>텍스트 자료 템플릿</title>
+<title>자료 P03</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -191,7 +191,7 @@
     <div class="brand">
       <div class="brand-mark">01</div>
       <div class="brand-text">
-        <div class="title">[자료 종류]</div>
+        <div class="title">국가 정책</div>
         <div class="sub">UNKNOWN SOURCE · 학습 자료</div>
       </div>
     </div>
@@ -207,7 +207,7 @@
       <!-- 소제목: 자료 형식 + 사용 장면을 입력하세요 -->
       <span class="scene-tag">문제 n번 • n층에서 발견</span>
       <!-- 메인 제목: 자료의 이름을 입력하세요 -->
-      <h1 class="evidence-title">[자료 제목]</h1>
+      <h1 class="evidence-title">사람이 중심이 되는 인공지능(AI) 윤리기준</h1>
     </div>
 
     <div class="evidence-card">
@@ -217,11 +217,16 @@
           - 줄바꿈과 스페이스 들여쓰기가 입력한 그대로 화면에 유지됩니다 (white-space:pre-wrap).
           - 탭 대신 스페이스 사용을 권장합니다 (에디터마다 탭 폭이 달라질 수 있음).
         -->
-        <pre class="doc-text">[여기에 실제 텍스트를 입력하세요]</pre>
+        <pre class="doc-text">3. 다양성 존중
+          - 인공지능 개발 및 활용 전 단계에서 사용자의 다양성과 대표성을 반영해야 하며, 성별·연령·
+장애·지역·인종·종교·국가 등 개인 특성에 따른 편향과 차별을 최소화하고, 상용화 된 인공지능은 
+모든 사람에게 공정하게 적용되어야 한다.
+          - 사회적 약자 및 취약 계층의 인공지능 기술 및 서비스에 대한 접근성을 보장하고, 인공지능이
+ 주는 혜택은 특정 집단이 아닌 모든 사람에게 골고루 분배되도록 노력해야 한다.</pre>
 
         <details class="source-fold">
           <summary>출처</summary>
-          <p>[실제 출처 입력]</p>
+          <p>인공지능기반정책과. (2020). 사람이 중심이 되는 인공지능(AI) 윤리기준｣. 과학기술정보통신부. 中 일부 발췌</p>
         </details>
       </div>
 
